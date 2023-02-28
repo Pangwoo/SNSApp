@@ -8,9 +8,8 @@
 </head>
 <body>
     <header>
-        <h1>Banner</h1>
         <nav>
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="postvideo.html">Post video</a></li>
             <li><a href="profile.html">Profile</a></li>
@@ -20,21 +19,18 @@
     </header>
     <main>
         <h2>Post Video</h2>
-        <form action="">
-            <label for="text">Title: </label>
+        <form>
+            <label for="title">Title: </label>
             <input type="text" id="title" name="title" value="">
-            <label for="text">Description</label>
+            <label for="desc">Description</label>
             <input type="text" id="desc" name="desc">
             <label for="video">Select a video: </label>
-            <input type="file" id="video" name="video">
+            <input type="file" accept="video/*" id="video" name="video">
             <input type="checkbox" id="policy" name="policy">
             <label for="policy">I accept</label>
-            <a href="#">Use Policy for uploading videos</a>
+            <a href="#">Acceptable Use Policy</a>
             <input type="submit" value="Post">
         </form>
     </main>
-    <footer>
-        Gwangwoo Lee &copy; 2023
-    </footer>
 </body>
 </html>
