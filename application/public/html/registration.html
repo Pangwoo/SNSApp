@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../css/styles.css" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="postvideo.html">Post video</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="registration.html">Registration</a></li>
-            <li><a href="viewpost.html">Viewpost</a></li>
-        </nav>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-title">
+                <a href="index.html">Website</a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-ul">
+                    <li class="nav-btn"><a href="index.html">Home</a></li>
+                    <li class="nav-btn"><a href="login.html">Login</a></li>
+                    <li class="nav-btn"><a href="postvideo.html">Post video</a></li>
+                    <li class="nav-btn"><a href="profile.html">Profile</a></li>
+                    <li class="nav-btn"><a href="registration.html">Registration</a></li>
+                    <li class="nav-btn"><a href="viewpost.html">Viewpost</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <h2>Registration</h2>
-        <form>
-            <label for="username">Username</label>
-            <input type="text" name ="username" id="username" placeholder="Username">
-            <label for="email">email</label>
-            <input type="text" name ="email" id="email" placeholder="E-Mail">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Password">
-            <label for="password">Confirm Password</label>
-            <input type="password" name="'password" id="password" placeholder="Confirm Password">
-            <input type="checkbox" name="age" id="age">
-            <label for="age">I am older than 13.</label>
-            <input type="checkbox" name="tos" id="tos">
-            <label for="tos">I accept</label>
-            <a href="#">TOS and Privacy Rules</a>
-            <input type="submit" value="Sign up">
+    <main class="registration-container">
+        <h2 class="registration-title">Registration</h2>
+        <form class="registration-form">
+            <div class="registration-form-container">
+                <label for="username">Username</label>
+                <input type="text" name ="username" id="username" placeholder="Username">
+            </div>
+            <div class="registration-form-container">
+                <label for="email">Email</label>
+                <input type="text" name ="email" id="email" placeholder="Email">
+            </div>
+            <div class="registration-form-container">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="registration-form-container">
+                <label for="password">Confirm Password</label>
+                <input type="password" name="'password" id="password" placeholder="Confirm Password">
+            </div>
+            <div class="registration-form-check">
+                <input type="checkbox" name="age" id="age">
+                <label for="age">I am older than 13.</label>
+            </div>
+            <div class="registration-form-check">
+                <input type="checkbox" name="tos" id="tos">
+                <label for="tos">I accept</label>
+                <a href="#">TOS and Privacy Rules</a>
+            </div>
+            <div class="registration-form-btn">
+                <input type="submit" class = "button" value="Sign up">
+            </div>
         </form>
     </main>
 </body>
