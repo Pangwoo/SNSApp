@@ -1,0 +1,19 @@
+@import "reset.css";
+
+@import "components/nav-bar.css";
+@import "components/button.css";
+
+@import "screens/index.css";
+@import "screens/registration.css";
+@import "screens/login.css";
+@import "screens/postvideo.css";
+@import "screens/profile.css";
+@import "screens/viewpost.css";
+
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
+

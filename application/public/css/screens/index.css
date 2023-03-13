@@ -1,0 +1,10 @@
+.main-contents {
+    margin-top: 110px;
+    display: flex;
+}
+
+.main-contents-content {
+    margin: 0px 30px;
+    margin-top: 30px;
+    font-size: 30px;
+}
