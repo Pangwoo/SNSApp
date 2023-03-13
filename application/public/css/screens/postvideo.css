@@ -1,0 +1,77 @@
+.postvideo-container {
+    margin-top: 110px;
+}
+.postvideo-title {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 50px;
+}
+
+.postvideo-form {
+    margin: 0px 30px;
+    margin-top: 30px;
+}
+
+.postvideo-form-container {
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+}
+
+.postvideo-form-container label {
+    font-size: 18px;
+    margin: 3px;
+}
+
+.postvideo-form-container input{
+    border: none;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    margin: 3px;
+    padding: 15px 16px;
+}
+
+.postvideo-form-container input:focus {
+    outline: none;
+    border-color: #00D7FF;
+}
+
+.postvideo-form-container input::placeholder{
+    padding-left: -8px;
+    color: rgb(161, 161, 161);
+}
+
+
+.postvideo-form-select-video{
+    display: flex;
+    flex-direction: row;
+}
+
+.postvideo-form-select-video label{
+    margin: 10px;
+    margin-bottom: 15px;
+    background-color: #0096FF;
+    color: #c7ecee;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+}
+
+.postvideo-form-select-video label:hover{
+    background-color: #00D7FF;
+    color: black;
+}
+
+.postvideo-form-select-video input[type="file"]{
+    display:none;
+}
+
+.postvideo-form-check {
+    margin: 0px 10px ;
+}
+
+.postvideo-form-btn {
+    margin:10px;
+}

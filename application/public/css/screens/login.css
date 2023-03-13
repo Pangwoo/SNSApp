@@ -27,9 +27,15 @@
     border: none;
     border-bottom: 1px solid rgb(207, 207, 207);
     margin: 3px;
-    padding: 15px 0px;
+    padding: 15px 16px;
+}
+
+.login-form-container input:focus {
+    outline: none;
+    border-color: #00D7FF;
 }
 
 .registration-form-container input::placeholder{
+    padding-left: -8px;
     color: rgb(161, 161, 161);
 }

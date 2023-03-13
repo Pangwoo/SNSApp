@@ -25,19 +25,29 @@
             </nav>
         </div>
     </header>
-    <main class="postvideo-main-contents">
-        <h2>Post Video</h2>
-        <form>
-            <label for="title">Title: </label>
-            <input type="text" id="title" name="title" value="">
-            <label for="desc">Description</label>
-            <input type="text" id="desc" name="desc">
-            <label for="video">Select a video: </label>
-            <input type="file" accept="video/*" id="video" name="video">
-            <input type="checkbox" id="policy" name="policy">
-            <label for="policy">I accept</label>
-            <a href="#">Acceptable Use Policy</a>
-            <input type="submit" value="Post">
+    <main class="postvideo-container">
+        <h2 class="postvideo-title">Post Video</h2>
+        <form class="postvideo-form">
+            <div class="postvideo-form-container">
+                <label for="title"></label>
+                <input type="text" id="title" name="title" value="" placeholder="Write a title...">
+            </div>
+            <div class="postvideo-form-container">
+                <label for="desc"></label>
+                <input type="text" id="desc" name="desc" placeholder="Write a description...">
+            </div>
+            <div class="postvideo-form-select-video">
+                <label for="video">Select a video</label>
+                <input type="file" accept="video/*" autocomplete="none" id="video" name="video">
+            </div>
+            <div class="postvideo-form-check">
+                <input type="checkbox" id="policy" name="policy">
+                <label for="policy">I accept</label>
+                <a href="#">Acceptable Use Policy</a>
+            </div>
+            <div class="postvideo-form-btn">
+                <input type="submit" class="button" value="Post">
+            </div>
         </form>
     </main>
 </body>
