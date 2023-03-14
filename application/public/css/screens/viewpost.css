@@ -1,0 +1,86 @@
+.post-container {
+    margin: 110px 50px;
+    background-color: white;
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 13px;
+}
+
+.post-info {
+    background-color: #C0DEFF;
+    border-radius: 5px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    
+}
+
+.post-info div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+    padding-bottom: 10px;
+}
+
+.post-title {
+    padding: 5px 30px;
+    font-size: 45px;
+    color: white;
+}
+
+.post-author {
+    font-size: 25px;
+    color: white;
+}
+
+.post-time {
+    color: white;
+}
+
+.posted-video {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.video {
+    
+    height: 400px;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+    width:500px;
+}
+
+.post-comment {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+}
+
+.post-comment p{
+    padding: 10px 10px;
+    font-size: 15px;
+}
+
+.comment-add {
+    display: flex;
+    padding: 10px 0px;
+}
+
+
+.comment-add label {
+    font-size: 30px;
+}
+
+.comment-add input{
+    border: none;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    margin: 5px;
+    padding: 5px 5px;
+    font-size: 15px;
+}
+
+.comment-add input:focus {
+    outline: none;
+    border-color: #00D7FF;
+}
