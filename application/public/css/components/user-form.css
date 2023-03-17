@@ -1,0 +1,52 @@
+.user-form {
+    width: var(--width);
+    margin: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-form-container {
+    width:var(--width);
+    display: flex;
+    flex-direction: column;
+    margin:10px 30px;
+}
+
+.user-form-container label {
+    font-size: 30px;
+    margin: 10px 5px;
+    padding-left: 10px;
+}
+
+.user-form-container input{
+    border: 1px solid var(--grey);
+    border-radius: 15px;
+    margin: 10px 5px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.user-form-container input:focus {
+    outline: none;
+    border-color: var(--sub);
+}
+
+.user-form-container input::placeholder{
+    color: var(--grey);
+}
+
+.user-form-checkbox-container{
+    display:flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.user-form-checkbox {
+    width: var(--width);
+    flex-direction: row; 
+    justify-content: left;
+    margin: 3px 0px;
+    padding-left: 30px;
+    font-size: 15px;
+}

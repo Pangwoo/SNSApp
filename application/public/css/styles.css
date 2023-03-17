@@ -1,14 +1,15 @@
 @import "reset.css";
+@import "variables.css";
 
-@import "components/nav-bar.css";
+@import "screens/pages.css";
+
+@import "components/user-form.css";
+@import "components/post-form.css";
 @import "components/button.css";
+@import "components/post.css";
+@import "components/profile.css";
 
-@import "screens/index.css";
-@import "screens/registration.css";
-@import "screens/login.css";
-@import "screens/postvideo.css";
-@import "screens/profile.css";
-@import "screens/viewpost.css";
+
 
 
 body {
@@ -16,4 +17,10 @@ body {
 }
 
 
+main {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 

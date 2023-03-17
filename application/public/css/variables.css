@@ -1,0 +1,11 @@
+:root {
+    --grey:  rgba(0, 0, 0, 0.3);
+    --primary: #0096FF;
+    --sub: #00D7FF;
+    --post: #C0DEFF;
+    --text: #c7ecee;
+    --side: rgb(233, 233, 233);
+    --width: 600px;
+    --btn-w: 85px;
+    --btn-h: 40px;
+}

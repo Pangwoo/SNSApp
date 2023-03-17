@@ -1,0 +1,22 @@
+.user-info {
+    margin: 50px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info h1 {
+    font-size: 50px;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.profile-post-lists {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-post-list {
+    width: var(--width);
+    display: flex;
+    justify-content: center;
+}

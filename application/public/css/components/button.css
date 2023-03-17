@@ -1,17 +1,63 @@
 .button{
-    background-color: #0096FF;
-    color: #c7ecee;
+    background-color: var(--primary);
+    color: var(--text);
     border: none;
     border-radius: 5px;
     font-size: 20px;
-    margin-top: 30px;
-    padding: 5px 10px;
+    padding: 8px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    transition-duration: 0.3s;
+    transition-duration: 0.4s;
 }
 
 .button:hover {
+    background-color: var(--sub);
+}
+
+.login-btn{
+    border:none !important;
+    margin: 30px 5px !important;
+}
+
+
+.select-video-btn {
+    width: 600px;
+    display: flex;
+    padding-left: 25px;
+    margin: 15px 30px;
+}
+
+.select-video-btn label {
+    font-size: 15px;
+    padding: 8px;
+}
+
+.select-video-btn label:hover {
+    background-color: var(--sub);
+}
+
+.select-video-btn input[type="file"] {
+    display: none;
+}
+
+.user-form-btn {
+    width: var(--width);
+    display:flex;
+    margin: 10px 0px;
+    
+}
+
+.user-form-btn input{
+    width: var(--btn-w);
+    height: var(--btn-h);
+    margin-left: 15px;
+    padding: 5px;
+}
+
+.comment-btn {
+    font-size: 12px;
+}
+
+.comment-btn:hover {
     background-color: white;
-    border: 1px solid #0096FF;
-    color: black;
+    color: var(--primary);
 }

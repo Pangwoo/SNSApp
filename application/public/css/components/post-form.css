@@ -1,0 +1,35 @@
+.post-form {
+    width: var(--width);
+    margin: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-form-container {
+    width:var(--width);
+    display: flex;
+    flex-direction: column;
+    margin:10px 30px;
+}
+
+.post-form-container input{
+    border: none;
+    border-bottom: 1px solid var(--grey);
+    margin: 3px;
+    padding: 15px 16px;
+}
+
+.post-form-container input:focus {
+    outline: none;
+    border-color: var(--sub);
+}
+
+.post-form-container input::placeholder{
+    font-size: 15px;
+    color: var(--grey);
+}
+
+.selected-video {
+    display: none;
+}
