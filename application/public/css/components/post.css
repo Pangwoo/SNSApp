@@ -92,7 +92,7 @@
     color: white;
 }
 
-#comment{
+.comment-input{
     border:none;
     background-color: var(--post);
     border-bottom: 1px solid var(--grey);
@@ -103,11 +103,11 @@
     color: white;
 }
 
-#comment::placeholder{
+.comment-input::placeholder{
     color: var(--grey);
 }
 
-#comment:focus{
+.comment-input:focus{
     outline: none;
     border-bottom: 1px solid white;
 }
