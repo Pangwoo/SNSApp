@@ -20,7 +20,7 @@
 }
 
 .user-form-container input{
-    border: 1px solid var(--grey);
+    border: 2px solid var(--grey);
     border-radius: 15px;
     margin: 10px 5px;
     padding: 15px;
@@ -49,4 +49,14 @@
     margin: 3px 0px;
     padding-left: 30px;
     font-size: 15px;
+}
+
+
+.wrong-form:focus{
+    outline: none;
+    border-color: red !important;
+}
+
+.error-message {
+    display: none;
 }

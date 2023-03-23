@@ -1,24 +1,14 @@
-
-
-/* .posts-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
-
 .post-container {
     width: var(--width);
     margin: 100px;
     border: 0.5px solid var(--side);
     border-radius: 15px;
+    background-color: var(--post);
 }
 
 .post-info {
     display: flex;
     flex-direction: column;
-    background-color: var(--post);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
 }
 
 .author-info{
@@ -46,20 +36,18 @@
 .posted-video {
     display:flex;
     justify-content: center;
-    margin: 30px;
-}
-
-.video {
-    width: var(--width);
+    padding: 30px;
+    background-color: white;
     height: var(--width);
 }
 
+.video {
+    
+}
+
 .post-comment{
-    background-color: var(--post);
     display: flex;
     flex-direction: column;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
 }
 
 .added-comment {

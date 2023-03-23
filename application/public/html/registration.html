@@ -30,22 +30,26 @@
             <h1>Sign Up</h1>
         </div>
         <div class="main-content">
-            <form class="user-form">
-                <div class="user-form-container">
+            <form class="user-form" id="registration-form">
+                <div class="user-form-container" id="username-form">
                     <label for="username">Username</label>
                     <input type="text" name ="username" id="username" placeholder="Username">
+                    <div class="error-message"></div>
                 </div>
-                <div class="user-form-container">
+                <div class="user-form-container" id="email-form">
                     <label for="email">Email</label>
                     <input type="text" name ="email" id="email" placeholder="Email">
+                    <div class="error-message"></div>
                 </div>
-                <div class="user-form-container">
+                <div class="user-form-container" id="password-form">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Password">
+                    <div class="error-message"></div>
                 </div>
-                <div class="user-form-container">
+                <div class="user-form-container" id="confirm-password-form">
                     <label for="password">Confirm Password</label>
-                    <input type="password" name="'password" id="password" placeholder="Confirm Password">
+                    <input type="password" name="password" id="confirm-password" placeholder="Confirm Password">
+                    <div class="error-message"></div>
                 </div>
                 <div class="user-form-checkbox-container">
                     <div class="user-form-checkbox">
@@ -57,12 +61,14 @@
                         <label for="tos">I accept</label>
                         <a href="#">TOS and Privacy Rules</a>
                     </div>
+                    <div class="error-message"></div>
                 </div>
                 <div class="user-form-btn">
-                    <input type="submit" class = "button" value="Sign up">
+                    <input type="submit" class = "button" value="Sign up" id="button">
                 </div>
             </form>
         </div>
     </main>
+    <script src="../js/formValidation.js"></script>
 </body>
 </html>

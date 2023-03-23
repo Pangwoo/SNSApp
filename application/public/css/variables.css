@@ -1,5 +1,6 @@
 :root {
     --grey:  rgba(0, 0, 0, 0.3);
+    --dark-mode-black: rgb(45, 45, 45);
     --primary: #0096FF;
     --sub: #00D7FF;
     --post: #C0DEFF;
