@@ -20,7 +20,7 @@
 }
 
 .user-form-container input{
-    border: 2px solid var(--grey);
+    border: 1.5px solid var(--grey);
     border-radius: 15px;
     margin: 10px 5px;
     padding: 15px;
@@ -54,9 +54,20 @@
 
 .wrong-form:focus{
     outline: none;
-    border-color: red !important;
+    border-color: var(--warn) !important;
+}
+
+#username:focus + div, #email:focus + div, #password:focus + div, #confirm-password:focus + div{
+    display: flex;
+    flex-direction: column;
 }
 
 .error-message {
-    display: none;
+    display:none;
+}
+
+.error-message span {
+    font-size: 14px;
+    padding: 5px 30px;
+    color: var(--sub);
 }
