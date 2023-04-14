@@ -59,6 +59,17 @@ function usernameChanged(event) {
     }   
 }
 
+let displayWarnMes = (span) => {
+    span.style.color = WARN_COLOR;
+    span.style.display = "flex";
+    return false;
+}
+
+let deleteWarnMes = (span) => {
+    span.style.display = "none";
+    return true;
+}
+
 let displayWarnMessage = (span, input) => {
     span.forEach(function(ele){
         ele.style.color = WARN_COLOR;
@@ -93,26 +104,69 @@ function emailChanged(event){
 }
 
 
-// let checkFirstLetterPW = (data) => {
-//     const checkFirstLetterSpan = document.getElementById("check-first-letterPW");
-//     if(isUpperCase(data[0]) && data !== ""){
-//         checkFirstLetterSpan.style.display = "none";
-
-//     }else{
-//         checkFirstLetterSpan.style.color = WARN_COLOR;
-//         checkFirstLetterSpan.style.display = "flex";
-//     }
-//     return (data===null) ? true : (isUpperCase(data[0])) ? true : false;  
-// }
+let checkFirstLetterPW = (inputPassword) => {
+    const checkFirstLetterSpan = document.getElementById("check-first-letterPW");
+    if(inputPassword === ""){
+        displayWarnMes(checkFirstLetterSpan);
+    }
+    for(var i = 0; i < inputPassword.length; i++){
+        if(isUpperCase(inputPassword[i])){
+            return deleteWarnMes(checkFirstLetterSpan);
+        }
+    }
+    return displayWarnMes(checkFirstLetterSpan);
+}
 // const regPassword = /[A-Za-z0-9/*\-+@!#$^&~\[\]]/;
 
+let checkSpecialChar = (inputPassword) => {
+    const checkSpecialLetterSpan = document.getElementById("check-special-char");
+    var specialChar = ['/','*','-','+','!','@','#','$','^','&','~','[',']'];
+    for(var i = 0; i < inputPassword.length; i++){
+        for(s in specialChar){
+            if(inputPassword[i] === specialChar[s]){
+                return deleteWarnMes(checkSpecialLetterSpan);
+            }
+        }
+    }
+    return displayWarnMes(checkSpecialLetterSpan);
+}
+
+let checkNumber = (inputPassword) => {
+    const checkSpecialLetterSpan = document.getElementById("check-special-char");
+    for (var i = 0; i < inputPassword.length; i++){
+        if(inputPassword[i].charCodeAt()>47 && inputPassword[i].charCodeAt()< 58){
+            return deleteWarnMes(checkSpecialLetterSpan);
+            
+        }
+    }
+    return displayWarnMes(checkSpecialLetterSpan);
+}
+
+let checkLength = (inputPassword) => {
+    const checkLengthSpan = document.getElementById("check-length");
+    if(inputPassword.length >= 8){
+        return deleteWarnMes(checkLengthSpan);
+    }
+    else{
+        return displayWarnMes(checkLengthSpan);
+    }
+}
+
 let checkPassword = (inputPassword) => {
-    const checkPasswordSpan = document.querySelectorAll(".check-password");
-    const regPassword = /^(?=.*[A-z])(?=.*[0-9])(?=.*[!@#$%^&+=]).{8,}$/;
-    return (regPassword.test(inputPassword))? 
-        deleteWarnMessage(checkPasswordSpan, password):
-        displayWarnMessage(checkPasswordSpan, password);
-} 
+    // const regPassword = /^(?=.*[A-z])(?=.*[0-9])(?=.*[!@#$^&~*/]).{8,}$/;
+    checkFirstLetterPW(inputPassword);
+    checkSpecialChar(inputPassword); 
+    checkNumber(inputPassword); 
+    checkLength(inputPassword);
+    if(checkFirstLetterPW(inputPassword)&&
+    checkSpecialChar(inputPassword)&&
+    checkNumber(inputPassword)&& 
+    checkLength(inputPassword)){
+        password.classList.remove(WORNG_FORM_CLASSNAME);
+    }else{
+        password.classList.add(WORNG_FORM_CLASSNAME);
+    }
+}
 
 function passwordChanged(event){
     let inputPassword = event.target.value;

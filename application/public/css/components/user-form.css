@@ -69,5 +69,5 @@
 .error-message span {
     font-size: 14px;
     padding: 5px 30px;
-    color: var(--sub);
+    color: rgb(236, 56, 56);;
 }

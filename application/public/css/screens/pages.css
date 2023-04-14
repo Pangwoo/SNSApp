@@ -59,6 +59,15 @@
     float: left;
 }
 
+.display{
+    margin: 10px 0px;
+}
+
+.display-text{
+    font-size: 20px;
+    color: var(--primary);
+}
+
 .page-title {
     text-align: center;
     font-size: 50px;  
@@ -78,6 +87,7 @@
 
 .footer-container{
     width: 100vw;
+    margin-top: 100px;
     bottom:0;
     display: flex;
     justify-content: center;
