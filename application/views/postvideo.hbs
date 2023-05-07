@@ -1,0 +1,36 @@
+<main class="contents-container">
+    <div class="page-title">
+        <h1>Post Video</h1>
+    </div>
+    <div class="main-content">
+        <form class="post-form">
+            <div class="post-form-container">
+                <label for="title"></label>
+                <input type="text" id="title" name="title" value="" placeholder="Write a title...">
+            </div>
+            <div class="post-form-container">
+                <label for="desc"></label>
+                <input type="text" id="desc" name="desc" placeholder="Write a description...">
+            </div>
+            <div class="selected-video">
+                <video class="video" controls>
+                    <source src="" type="video/mp4"/>
+                </video>
+            </div>
+            <div class="select-video-btn">
+                <label for="video" class="button">Select a video</label>
+                <input type="file" accept="video/*" autocomplete="none" id="video" name="video">
+            </div>
+            <div class="user-form-checkbox-container">
+                <div class="user-form-checkbox">
+                    <input type="checkbox" id="policy" name="policy">
+                    <label for="policy">I accept</label>
+                    <a href="#">Acceptable Use Policy</a>
+                </div>
+            </div>
+            <div class="user-form-btn">
+                <input type="submit" class="button" value="Post">
+            </div>
+        </form>
+    </div>
+</main>

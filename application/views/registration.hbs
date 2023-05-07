@@ -1,0 +1,55 @@
+<main class="contents-container">
+    <div class="page-title">
+        <h1>Sign Up</h1>
+    </div>
+    <div class="main-content">
+        <form class="user-form" id="registration-form">
+            <div class="user-form-container" id="username-form">
+                <label for="username">Username</label>
+                <input type="text" name ="username" required id="username" placeholder="Username">
+                <div class="error-message">
+                    <span class="check-username" id="check-first-letter">*Username Begins with a character</span>
+                    <span class="check-username" id="check-three-alphanumeric">*Username has at least 3 alphanumeric characters</span>
+                </div>
+            </div>
+            <div class="user-form-container" id="email-form">
+                <label for="email">Email</label>
+                <input type="email" name ="email" required id="email" placeholder="Email">
+                <div class="error-message">
+                    <span id="check-email" class="check-email">Invalid Email</span>
+                </div>
+            </div>
+            <div class="user-form-container" id="password-form">
+                <label for="password">Password</label>
+                <input type="password" name="password" required id="password" placeholder="Password">
+                <div class="error-message">
+                    <span id ="check-first-letterPW" class="check-password">Password contains at least 1 upper case letter.</span>
+                    <span id="check-special-char" class="check-password">Password contains at least 1 number and 1 special characters.</span>
+                    <span id="check-length" class="check-password">Password has at least 8 or more characters.</span>
+                </div>
+            </div>
+            <div class="user-form-container" id="confirm-password-form">
+                <label for="password">Confirm Password</label>
+                <input type="password" name="password" required id="confirm-password" placeholder="Confirm Password">
+                <div class="error-message">
+                    <span class="check-confirm-password">Confirm password and password inputs must be same.</span>
+                </div>
+            </div>
+            <div class="user-form-checkbox-container">
+                <div class="user-form-checkbox">
+                    <input type="checkbox" required name="age" id="age">
+                    <label for="age">I am older than 13.</label>
+                </div>
+                <div class="user-form-checkbox">
+                    <input type="checkbox" required name="tos" id="tos">
+                    <label for="tos">I accept</label>
+                    <a href="#">TOS and Privacy Rules</a>
+                </div>
+                <div class="error-message"></div>
+            </div>
+            <div class="user-form-btn">
+                <input type="submit" class = "button" value="Sign up" id="button">
+            </div>
+        </form>
+    </div>
+</main>
