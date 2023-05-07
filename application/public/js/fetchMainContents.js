@@ -34,7 +34,7 @@ const deleteContent = (event) =>{
         const displayText = document.querySelector(".display-text");
         displayText.innerText = (contentsContainer.length) + " contents are displayed!";
         clearInterval(timer);
-    }, 2000);
+    }, 200);
     
             
 }
