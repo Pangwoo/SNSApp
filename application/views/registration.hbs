@@ -3,7 +3,7 @@
         <h1>Sign Up</h1>
     </div>
     <div class="main-content">
-        <form class="user-form" id="registration-form">
+        <form class="user-form" id="registration-form" action="/users/registration" method="POST" enctype="application/x-www-form-urlencoded">
             <div class="user-form-container" id="username-form">
                 <label for="username">Username</label>
                 <input type="text" name ="username" required id="username" placeholder="Username">
@@ -30,7 +30,7 @@
             </div>
             <div class="user-form-container" id="confirm-password-form">
                 <label for="password">Confirm Password</label>
-                <input type="password" name="password" required id="confirm-password" placeholder="Confirm Password">
+                <input type="password" name="confirmPassword" required id="confirm-password" placeholder="Confirm Password">
                 <div class="error-message">
                     <span class="check-confirm-password">Confirm password and password inputs must be same.</span>
                 </div>
