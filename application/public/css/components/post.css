@@ -64,6 +64,7 @@
 
 .comment-title {
     margin-bottom: 18px;
+    font-size:20px;
     font-weight: 700;
 }
 
@@ -98,6 +99,11 @@
 .comment-input:focus{
     outline: none;
     border-bottom: 1px solid white;
+}
+
+.comment-username {
+    padding-right: 10px;
+    font-size: 20px;
 }
 
 

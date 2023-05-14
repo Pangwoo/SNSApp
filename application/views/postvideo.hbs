@@ -3,14 +3,14 @@
         <h1>Post Video</h1>
     </div>
     <div class="main-content">
-        <form class="post-form">
+        <form class="post-form" action="/posts/create" method="POST" enctype="multipart/form-data">
             <div class="post-form-container">
                 <label for="title"></label>
                 <input type="text" id="title" name="title" value="" placeholder="Write a title...">
             </div>
             <div class="post-form-container">
                 <label for="desc"></label>
-                <input type="text" id="desc" name="desc" placeholder="Write a description...">
+                <input type="text" id="desc" name="description" placeholder="Write a description...">
             </div>
             <div class="selected-video">
                 <video class="video" controls>
@@ -19,11 +19,11 @@
             </div>
             <div class="select-video-btn">
                 <label for="video" class="button">Select a video</label>
-                <input type="file" accept="video/*" autocomplete="none" id="video" name="video">
+                <input type="file" accept="video/*" autocomplete="none" id="video" required name="uploadVideo">
             </div>
             <div class="user-form-checkbox-container">
                 <div class="user-form-checkbox">
-                    <input type="checkbox" id="policy" name="policy">
+                    <input type="checkbox" id="policy">
                     <label for="policy">I accept</label>
                     <a href="#">Acceptable Use Policy</a>
                 </div>
