@@ -18,7 +18,10 @@ router.get('/profile', function(req, res){
   res.render('profile', { title: 'Profile' });
 });
 
-
+// router.get('/viewpost/:id(\\d+)', function(req, res){
+//     res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
+//   });
+  
 
 // router.use("/postVideo", function(req,res,next){
 //   if(req.userIsLoggedIn){
@@ -32,9 +35,7 @@ router.get('/postVideo', function(req, res){
   res.render('postVideo', { title: 'Post Video' });
 });
 
-router.get('/viewpost/:id(\\d+)', function(req, res){
-  res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
-});
+
 
 
 module.exports = router;
