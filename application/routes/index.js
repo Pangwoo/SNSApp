@@ -1,4 +1,5 @@
 var express = require('express');
+const {isLoggedIn} = require("../middleware/auth");
 var router = express.Router();
 
 /* GET home page. */
@@ -18,9 +19,9 @@ router.get('/profile', function(req, res){
   res.render('profile', { title: 'Profile' });
 });
 
-// router.get('/viewpost/:id(\\d+)', function(req, res){
-//     res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
-//   });
+router.get('/viewpost/:id(\\d+)', function(req, res){
+    res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
+  });
   
 
 // router.use("/postVideo", function(req,res,next){
@@ -31,7 +32,7 @@ router.get('/profile', function(req, res){
 //   }
 // });
 
-router.get('/postVideo', function(req, res){
+router.get('/postVideo',isLoggedIn, function(req, res){
   res.render('postVideo', { title: 'Post Video' });
 });
 
