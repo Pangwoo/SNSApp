@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../conf/database');
 var bcrypt = require('bcrypt');
 var {isLoggedIn, isMyProfile} = require("../middleware/auth");
+var {getPostsForUserBy} = require("../middleware/posts");
 const { isUsernameUnique, usernameCheck, isEmailUnique, passwordCheck, emailCheck, tosCheck, ageCheck } = require('../middleware/validation');
 
 /* GET localhost:3000/users */
@@ -56,7 +57,7 @@ router.post('/login', async function(req,res,next){
     var user = rows[0];
     
     if(!user){
-      req.flash("error", `Log In Failed: INvalid username/password`);
+      req.flash("error", `Log In Failed: Invalid username/password`);
       req.session.save(function(err){
         return res.redirect("/login");
       });
@@ -90,10 +91,14 @@ router.post('/login', async function(req,res,next){
 // })
 
 
-router.get('/profile/:id(\\d+)',isLoggedIn, isMyProfile , async function(req, res){
-  res.render('profile', { title: 'Profile', username: req.session.user.username, email: req.session.user.email });
+router.get('/profile/:id(\\d+)',isLoggedIn, isMyProfile, getPostsForUserBy, async function(req, res){
+  res.render('profile', { title: 'Profile', username: req.session.user.username, email: req.session.user.email, posts:res.locals.posts });
 });
 
+router.post('/profile/:id(\\d+)/:id(\\d+)'), function(req,res,next){
+  console.log(req);
+  return res.redirect('/');
+}
 // router.get('/viewpost/:id(\\d+)', function(req, res){
 //   res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
 // });

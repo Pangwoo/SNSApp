@@ -1,10 +1,11 @@
 var express = require('express');
 const {isLoggedIn} = require("../middleware/auth");
+const {getRecentPosts} =require("../middleware/posts");
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'CSC 317 App', name:"Gwangwoo Lee", js:["fetchMainContents.js"] });
+router.get('/', getRecentPosts, function(req, res, next) {
+  res.render('index', { title: 'CSC 317 App', name:"Gwangwoo Lee", js:["fetchMainContents.js"], posts:res.locals.posts});
 });
 
 router.get('/login', function(req, res, next){

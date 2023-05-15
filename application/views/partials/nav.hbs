@@ -4,7 +4,7 @@
         <li class="nav-btn"><a href="/postVideo">Post</a></li>
         {{#if isLoggedIn}}
             {{!-- <li class="nav-btn"><a href="/profile">Profile</a></li>         --}}
-            <li class="nav-btn"><a href="/viewpost">Viewpost</a></li>
+            {{> search}}
             {{> userdropdown}}  
         {{else}}
             <li class="nav-btn"><a href="/login">Login</a></li>

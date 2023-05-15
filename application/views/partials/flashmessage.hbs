@@ -1,7 +1,7 @@
 <div id="flash-message">
     {{#if messages.error}}
-        <div class="alert alert-danger">{{messages.error}}</div>
+        <div class="alert alert-danger"><i class="fa-solid fa-circle-info" style="color: rgb(247, 136, 136);"></i><span class="alert-error-message">{{messages.error}}</span></div>
     {{else}}
-        <div class="alert alert-success">{{messages.success}}</div>
+        <div class="alert alert-success"><i class="fa-regular fa-face-smile"></i><span class="alert-error-message">{{messages.success}}</span></div>
     {{/if}}
 </div>

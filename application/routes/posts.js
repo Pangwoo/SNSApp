@@ -3,7 +3,7 @@ var router = express.Router();
 var multer = require("multer");
 var db = require('../conf/database');
 
-const { makeThumbnail } = require("../middleware/posts");
+const { makeThumbnail, getPostById, getPostBySearch, getCommentsForPostById } = require("../middleware/posts");
 const { isLoggedIn } = require("../middleware/auth");
 
 const storage = multer.diskStorage({
@@ -42,17 +42,23 @@ router.post("/create", isLoggedIn, upload.single("uploadVideo"), makeThumbnail, 
     }
 });
 
-router.get('/:id(\\d+)', function(req, res){
-    res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
+router.get('/:id(\\d+)',getPostById, getCommentsForPostById, function(req, res){
+    res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"], post:res.locals.post, comments:res.locals.comments });
   });
 
 
-router.get("/search", function(req, res, next){
-
+router.post("/search", getPostBySearch, function(req, res, next){
+    if(res.locals.post){
+        return res.redirect(`/posts/${res.locals.post.id}`);
+    }
+    else{
+        return res.redirect('/');
+    }
 });
 
-router.delete("/delete", function(req,res,next){
-
+router.post("/delete", function(req,res,next){
+    console.log(req);
+    return res.end();
 });
   
 

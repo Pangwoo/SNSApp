@@ -1,12 +1,24 @@
 .user-info {
     margin: 50px 30px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
 }
 
+
+
+.user-image{
+    font-size:150px;
+    margin-right: 30px;
+    color: var(--primary);
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
 .user-info h1 {
-    font-size: 50px;
-    text-align: center;
+    font-size: 40px;
     margin: 10px 0px;
 }
 
@@ -15,8 +27,33 @@
     flex-direction: column;
 }
 
+.profile-post-container {
+    width: var(--width);
+    margin: 30px;
+    border: 0.5px solid var(--side);
+    border-radius: 15px;
+    background-color: var(--post);
+}
+
+
 .profile-post-list {
     width: var(--width);
     display: flex;
     justify-content: center;
+}
+
+.post-btn{
+    font-size: 20px;
+}
+
+.post-btn i:hover{
+    font-size: 25px;
+}
+
+
+.thumbnail {
+    display:flex;
+    justify-content: center;
+    padding: 30px;
+    background-color: white;
 }

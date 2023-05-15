@@ -1,6 +1,32 @@
 <main class="contents-container">
-    <div class="page-title">
-        <h1>Posts</h1>
+    <div class="post-container">
+        <div class="post-info">
+            <h1 class="post-text post-title">{{post.title}}</h1>
+            <div class="author-info">
+                <h1 class="post-text post-author">{{post.username}}</h1>
+                <time class="post-text post-time">{{post.createdAt}}</time>
+            </div>
+        </div>
+        <div class="posted-video">
+            <video class="video" controls>
+                <source src="../../{{post.video}}" type="video/mp4"/>
+            </video>
+        </div>
+        <div class="post-comment">
+            <ul class="added-comment">
+                <h2 class="comment-title">Comment</h2>
+                {{#each comments}}
+                    <li><div><span class="comment-username">{{this.username}}</span><span class="comment-content">{{this.text}}</span></div></li>
+            
+                {{/each}}
+                
+                
+            </ul>
+            <form class="add-comment" action="/comments/add" method="POST" enctype="application/x-www-form-urlencoded">
+                <label for="post1-comment">♥</label>
+                <input type="text"class="comment-input" name="comment" id="post-comment" placeholder="Add a comment">
+                <input type="submit" class="button comment-btn" value="Add">
+            </form>
+        </div>
     </div>
-    {{> postContainer}}
 </main>

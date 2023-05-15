@@ -8,6 +8,7 @@ function showDropdown(event){
 function deleteDropdown(event){
     dropdownMenuItems.style.display = "none";
 }
-
-dropdownMenuNobs.addEventListener("mouseover", showDropdown);
-dropdownMenuNobs.addEventListener("mouseout", deleteDropdown);
+if (dropdownMenuNobs && dropdownMenuItems){
+    dropdownMenuNobs.addEventListener("mouseover", showDropdown);
+    dropdownMenuNobs.addEventListener("mouseout", deleteDropdown);
+}
