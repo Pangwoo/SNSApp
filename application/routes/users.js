@@ -90,8 +90,8 @@ router.post('/login', async function(req,res,next){
 // })
 
 
-router.get('/profile/:id(\\d+)',isLoggedIn, isMyProfile , function(req, res){
-  res.render('profile', { title: 'Profile' });
+router.get('/profile/:id(\\d+)',isLoggedIn, isMyProfile , async function(req, res){
+  res.render('profile', { title: 'Profile', username: req.session.user.username, email: req.session.user.email });
 });
 
 // router.get('/viewpost/:id(\\d+)', function(req, res){

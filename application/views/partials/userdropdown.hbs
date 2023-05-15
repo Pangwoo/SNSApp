@@ -1,10 +1,12 @@
-<div class="dropdown-menu-nobs">
-    <button class="button-dropdown nav-items">Hi, {{user.username}}</button>
+<div class="dropdown-menu-nobs" id="dropdown-menu-nobs">
+    <button class="button-dropdown nav-btn nav-btn-btn">Hi, {{user.username}}</button>
     <div class="dropdown-menu-items">
-        <a href="/users/profile/{{user.userId}}" class="nav-items">Profile</a>
+        <li class="nav-btn">
+            <a href="/users/profile/{{user.userId}}">Profile</a>
+        </li>
         <form action="/users/logout" method="post">
             <input type="hidden" value="{{csrf}}">
-            <button class="nav-items" type="submit">Log out</button>
+            <button class="nav-btn-btn" type="submit">Log out</button>
         </form>
     </div>
 </div>

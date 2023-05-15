@@ -6,7 +6,7 @@ module.exports = {
             req.flash("error", `You must be logged in.`);
             req.session.save(function(err){
                 if(err) next(err);
-                res.rediect('/login');
+                res.redirect('/login');
             })
         }
     },
@@ -19,7 +19,7 @@ module.exports = {
             req.flash("error", `This is not your profile. This profile is private.`);
             req.session.save(function(err){
                 if(err) next(err);
-                res.rediect('/');
+                res.redirect('/');
             })
         }
     }
