@@ -45,6 +45,10 @@
 .post-btn{
     font-size: 20px;
 }
+.post-btn button {
+    background-color: var(--post);
+    border: none;
+}
 
 .post-btn i:hover{
     font-size: 25px;

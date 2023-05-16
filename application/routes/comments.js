@@ -4,13 +4,10 @@ var db = require('../conf/database');
 var {isLoggedIn} = require("../middleware/auth");
 
 
-router.post("/add", isLoggedIn, async function(req, res){
+router.post("/add/:postId(\\d+)", isLoggedIn, async function(req, res){
     var comment = req.body.comment;
     var { userId } = req.session.user;
-    var  postId = 1;
-    console.log(comment);
-    console.log(userId);
-    console.log(postId);
+    var  { postId}  = req.params;
     try{
         var [resultObject, fields] = await db.execute(`INSERT INTO comments(text, fk_authorId, fk_postId) value(?,?,?);`,[comment, userId, postId]);
         if(resultObject && resultObject.affectedRows){

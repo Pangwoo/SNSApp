@@ -2,6 +2,13 @@
     <div class="page-title">
     Loading...
     </div>
-    <div id="contents-container" class="index-contents-container"></div>
+    <div id="contents-container" class="index-contents-container">
+        {{#each posts}}
+            <div class="index-main-content">
+                <span class="main-content-title">{{this.title}}</span>
+                <img class="content-img" src="{{this.thumbnail}}">
+            </div>
+        {{/each}}
+    </div>
     
 </main>

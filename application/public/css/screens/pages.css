@@ -159,6 +159,7 @@
     text-align: center;
     font-size: 15px;
     position: absolute;
+    color: #ffffff;
     background-color: var(--grey);
     top:0;
 }

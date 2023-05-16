@@ -22,7 +22,7 @@
                 
                 
             </ul>
-            <form class="add-comment" action="/comments/add" method="POST" enctype="application/x-www-form-urlencoded">
+            <form class="add-comment" action="/comments/add/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
                 <label for="post1-comment">♥</label>
                 <input type="text"class="comment-input" name="comment" id="post-comment" placeholder="Add a comment">
                 <input type="submit" class="button comment-btn" value="Add">

@@ -3,7 +3,7 @@ var router = express.Router();
 var multer = require("multer");
 var db = require('../conf/database');
 
-const { makeThumbnail, getPostById, getPostBySearch, getCommentsForPostById } = require("../middleware/posts");
+const { makeThumbnail, getPostById, getPostBySearch, getCommentsForPostById, deletePostById } = require("../middleware/posts");
 const { isLoggedIn } = require("../middleware/auth");
 
 const storage = multer.diskStorage({
@@ -56,10 +56,10 @@ router.post("/search", getPostBySearch, function(req, res, next){
     }
 });
 
-router.post("/delete", function(req,res,next){
-    console.log(req);
-    return res.end();
-});
+router.post("/delete/:id(\\d+)", deletePostById, function(req,res,next){
+    var {userId} = req.session.user;
+    return res.redirect(`/users/profile/${userId}`);
+  });
   
 
 module.exports = router;

@@ -6,23 +6,7 @@ var {isLoggedIn, isMyProfile} = require("../middleware/auth");
 var {getPostsForUserBy} = require("../middleware/posts");
 const { isUsernameUnique, usernameCheck, isEmailUnique, passwordCheck, emailCheck, tosCheck, ageCheck } = require('../middleware/validation');
 
-/* GET localhost:3000/users */
-// router.get('/', async function(req, res, next) {
-//     try{
-//       let [rows, fields] = await db.query(`select * from users;`);
-//       res.status(200).json({json, fields});
-//     }catch(error){
-//       next(error);
-//     }
-// });
 
-// router.use("/registration", function(req, res, next){
-  
-// })
-
-// router.get('/login', function(req, res){
-//   res.render('login');
-// })
 
 //localhost:3000/users/registration/
 router.post('/registration',usernameCheck, passwordCheck, emailCheck, tosCheck, ageCheck, isUsernameUnique, isEmailUnique, async function(req,res,next){
@@ -33,11 +17,17 @@ router.post('/registration',usernameCheck, passwordCheck, emailCheck, tosCheck, 
     var [resultObject, fields] = await db.execute(`INSERT INTO users(username, email, password) value(?,?,?);`,[username, email, hasedPassword]);
     
     if(resultObject && resultObject.affectedRows == 1){
-      return res.redirect("/login");
+      req.flash("success", "Account created!");
+      return req.session.save(function(err){
+        return res.redirect("/login");
+      });
     }
     else
     {
-      return res.redirect("/registration");
+      req.flash("error", "Invalid to Create New Account");
+      return req.session.save(function(err){
+        return res.redirect("/registration");
+      });
     }
   }catch(error){
     next(error);
@@ -82,26 +72,10 @@ router.post('/login', async function(req,res,next){
   }
 });
 
-// router.use(function(req,res,next){
-//   if(req.session.user){
-//     next();
-//   }else{
-//     return res.redirect("/login");
-//   }
-// })
-
 
 router.get('/profile/:id(\\d+)',isLoggedIn, isMyProfile, getPostsForUserBy, async function(req, res){
   res.render('profile', { title: 'Profile', username: req.session.user.username, email: req.session.user.email, posts:res.locals.posts });
 });
-
-router.post('/profile/:id(\\d+)/:id(\\d+)'), function(req,res,next){
-  console.log(req);
-  return res.redirect('/');
-}
-// router.get('/viewpost/:id(\\d+)', function(req, res){
-//   res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"] });
-// });
 
 router.post("/logout",isLoggedIn, function (req, res, next){
   req.session.destroy(function(err){

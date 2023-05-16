@@ -20,16 +20,6 @@ router.get('/profile', function(req, res){
   res.render('profile', { title: 'Profile' });
 });
 
-
-
-// router.use("/postVideo", function(req,res,next){
-//   if(req.userIsLoggedIn){
-//     next();
-//   }else{
-//     res.redirect('/users/login');
-//   }
-// });
-
 router.get('/postVideo',isLoggedIn, function(req, res){
   res.render('postVideo', { title: 'Post Video' });
 });
