@@ -4,29 +4,80 @@
             <h1 class="post-text post-title">{{post.title}}</h1>
             <div class="author-info">
                 <h1 class="post-text post-author">{{post.username}}</h1>
-                <time class="post-text post-time">{{post.createdAt}}</time>
+                <time class="post-text post-time">{{formatDateString post.createdAt}}</time>
             </div>
         </div>
         <div class="posted-video">
             <video class="video" controls>
-                <source src="../../{{post.video}}" type="video/mp4"/>
+                <source src="/{{post.video}}" type="video/mp4"/>
             </video>
         </div>
         <div class="post-comment">
-            <ul class="added-comment">
+            <ul class="added-comment" id = "added-comment">
                 <h2 class="comment-title">Comment</h2>
                 {{#each comments}}
-                    <li><div><span class="comment-username">{{this.username}}</span><span class="comment-content">{{this.text}}</span></div></li>
-            
+                    <li>
+                        <div>
+                            <span class="comment-username">{{this.username}}: </span>
+                            <span class="comment-content">{{this.text}}</span>
+                        </div>
+                        <span>{{formatDateString this.createdAt}}</span>
+                    </li>
                 {{/each}}
                 
                 
             </ul>
-            <form class="add-comment" action="/comments/add/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+            {{!-- action="/comments/add/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded" --}}
+            <div class="add-comment" >
                 <label for="post1-comment">♥</label>
                 <input type="text"class="comment-input" name="comment" id="post-comment" placeholder="Add a comment">
-                <input type="submit" class="button comment-btn" value="Add">
-            </form>
+                <input type="submit" class="button comment-btn" id="post-comment-btn" value="Add" data-postid = "{{post.id}}">
+            </div>
         </div>
     </div>
+    <script>
+        document.getElementById("post-comment-btn").addEventListener('click', function(ev){
+            let commentText = document.getElementById("post-comment").value;
+            if(!commentText){
+                return;
+            }
+            var postId = ev.currentTarget.dataset.postid;
+
+            fetch("/comments/create",{
+                method: "POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(
+                    {
+                        postId: postId,
+                        comment: commentText
+                    }
+                )
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data=> {
+                let ulTag = document.getElementById('added-comment');
+                let commentFragment = document.createElement('li');
+                let divTag = document.createElement('div');
+                let usernameTag = document.createElement('span');
+                let contentTag = document.createElement('span');
+                let timeTag = document.createElement('span');
+                usernameTag.classList.add("comment-username");
+                usernameTag.innerText = `${data.username}: `;
+                contentTag.classList.add("comment-content");
+                contentTag.innerText = `${data.commentText}`;
+                timeTag.innerText = `${(new Date()).toLocaleString("en-us",{
+          dateStyle: "long",
+        })}`;
+                divTag.append(usernameTag);
+                divTag.append(contentTag);
+                commentFragment.append(divTag);
+                commentFragment.append(timeTag);
+                ulTag.append(commentFragment);
+            })
+        })
+    </script>
 </main>

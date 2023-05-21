@@ -43,18 +43,43 @@ router.post("/create", isLoggedIn, upload.single("uploadVideo"), makeThumbnail, 
 });
 
 router.get('/:id(\\d+)',getPostById, getCommentsForPostById, function(req, res){
-    res.render('viewpost', { title: `View Post ${req.params.id}`, js:["viewpost.js"], post:res.locals.post, comments:res.locals.comments });
+    res.render('viewpost', { title: `View Post ${req.params.id}`, post:res.locals.post, comments:res.locals.comments });
   });
 
 
-router.post("/search", getPostBySearch, function(req, res, next){
-    if(res.locals.post){
-        return res.redirect(`/posts/${res.locals.post.id}`);
+// router.post("/search", getPostBySearch, function(req, res, next){
+//     if(res.locals.post){
+//         return res.redirect(`/posts/${res.locals.post.id}`);
+//     }
+//     else{
+//         return res.redirect('/');
+//     }
+// });
+
+//in class
+router.get("/search", async function (req, res, next) {
+    
+    var {searchValue} = req.query;
+    try{
+        var [rows, _ ] = await db.execute(
+            `select id,title,thumbnail, concat_ws(' ', title, description) as haystack 
+            from posts
+            having haystack like ?;`,[`%${searchValue}%`]
+        );
+
+        if(rows && rows.length == 0){
+            req.flash("error", "Invalid Post");
+                return req.session.save(function(err){
+                    return res.redirect("/");
+            })
+        }else{
+            res.locals.posts = rows;
+            return res.render('index', {posts:res.locals.posts});
+        }
+    }catch(error){
+        next(error);
     }
-    else{
-        return res.redirect('/');
-    }
-});
+})
 
 router.post("/delete/:id(\\d+)", deletePostById, function(req,res,next){
     var {userId} = req.session.user;

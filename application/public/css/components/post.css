@@ -59,6 +59,8 @@
 }
 
 .added-comment li { 
+    display: flex;
+    justify-content: space-between;
     margin: 13px 0px;
 }
 

@@ -34,20 +34,25 @@ module.exports = {
     },
 
     getPostById: async function(req,res,next){
-        const id = req.params.id;
+        var id = req.params.id;
         try{
-            var[rows, fields] = await db.execute(`select * from posts where id=?;`,[id]);
-            if(rows && rows.length>0){
-                var[users, fields] = await db.execute(`select username from users where id=?;`,[rows[0].fk_userId]);
-                rows[0].createdAt = `${rows[0].createdAt.getMonth()+1}-${rows[0].createdAt.getDate()} ${rows[0].createdAt.getHours()}`;
-                rows[0].username = users[0].username;
-                res.locals.post = rows[0];
-                next();
-            }else{
+            var[rows, fields] = await db.execute(`select u.username, p.video, p.title, p.description, p.id, p.createdAt
+            from posts p
+            JOIN users u
+            ON p.fk_userId = u.id
+            WHERE p.id = ?;`,[id]);
+
+            const post = rows[0];
+            if(!post){
                 req.flash("error", "Invalid Post");
                 req.session.save(function(err){
                     return res.redirect("/");
                 })
+            }else{
+                
+                res.locals.post = post;
+                next();
+                
             }
         }catch(error){
             next(error);
@@ -58,12 +63,13 @@ module.exports = {
     getCommentsForPostById: async function(req,res,next){
         const id = req.params.id;
         try{
-            var[rows, fields] = await db.execute(`select * from comments where fk_postId=?;`,[id]);
-            rows.forEach(async function(ele) {
-                var {fk_authorId} = ele;
-                var[user, userFields] = await db.execute(`select username from users where id=?;`, [fk_authorId]);
-                ele.username = user[0].username;
-            });
+            var[rows, fields] = await db.execute(
+                `select u.username, c.text, c.createdAt
+                from comments c
+                JOIN users u
+                ON c.fk_authorId = u.id
+                WHERE c.fk_postId = ?;`,[id]);
+            
             if(rows && rows.length>0){
                 res.locals.comments = rows;
             }
@@ -83,29 +89,29 @@ module.exports = {
         }
     },
 
-    getPostBySearch: async function(req,res,next){
-        var search = req.body.search;
-        try{
-            var [idRows, fields] = await db.execute(`SELECT * FROM csc317db.posts where id=?;`, [search]);
-            var [titleRows, titleFields] = await db.execute(`SELECT * FROM csc317db.posts where title=?;`, [search]);
-            if(idRows && idRows.length > 0){
-                res.locals.post = idRows[0];
-                next();
-            }
-            if(titleRows && titleRows.length > 0){
-                res.locals.post = titleRows[0];
-                next();
-            }
-            else{
-                req.flash("error", "Invalid Post");
-                return req.session.save(function(err){
-                    return res.redirect("/");
-                })
-            } 
-        }catch(error){
-            next(error);
-        }
-    },
+    // getPostBySearch: async function(req,res,next){
+    //     var {searchValue} = req.query;
+    //     try{
+    //         var [idRows, fields] = await db.execute(`SELECT * FROM csc317db.posts where id=?;`, [search]);
+    //         var [titleRows, titleFields] = await db.execute(`SELECT * FROM csc317db.posts where title=?;`, [search]);
+    //         if(idRows && idRows.length > 0){
+    //             res.locals.post = idRows[0];
+    //             next();
+    //         }
+    //         if(titleRows && titleRows.length > 0){
+    //             res.locals.post = titleRows[0];
+    //             next();
+    //         }
+    //         else{
+    //             req.flash("error", "Invalid Post");
+    //             return req.session.save(function(err){
+    //                 return res.redirect("/");
+    //             })
+    //         } 
+    //     }catch(error){
+    //         next(error);
+    //     }
+    // },
     deletePostById: async function(req,res,next){
         var { id } = req.params;
         try{

@@ -4,26 +4,31 @@ var db = require('../conf/database');
 var {isLoggedIn} = require("../middleware/auth");
 
 
-router.post("/add/:postId(\\d+)", isLoggedIn, async function(req, res){
+router.post("/create", isLoggedIn, async function(req, res, next){
+    
     var comment = req.body.comment;
-    var { userId } = req.session.user;
-    var  { postId}  = req.params;
+    var { userId, username } = req.session.user;
+    var  { postId }  = req.body;
+    
+    // res.status(201).json(req.body);
     try{
         var [resultObject, fields] = await db.execute(`INSERT INTO comments(text, fk_authorId, fk_postId) value(?,?,?);`,[comment, userId, postId]);
-        if(resultObject && resultObject.affectedRows){
-            req.flash("success", "Your comment was created!");
-            return req.session.save(function(error){
-                if(error) next(error);
-                return res.redirect(`/posts/${postId}`);
-            })
+        
+        if(resultObject && resultObject.affectedRows == 1){
+            return res.status(201).json({
+                    commentId: resultObject.insertId,
+                    username: username,
+                    commentText: comment,
+                }
+            )        
         }else{
-            next(new Error('Comment could not be created'));
+            res,json({
+                message: "error"
+            }) 
         }
     }catch(error){
         next(error);
     }
-    return res.redirect(`/posts/${postId}`);
 });
-
 module.exports = router;
 
