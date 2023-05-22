@@ -179,7 +179,9 @@
 .footer-container{
     width: 100vw;
     margin-top: 100px;
+
     bottom:0;
+    position: fixed;
     display: flex;
     justify-content: center;
 }
