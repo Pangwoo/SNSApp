@@ -27,7 +27,8 @@ router.post("/create", isLoggedIn, upload.single("uploadVideo"), makeThumbnail, 
     var { userId } = req.session.user;
 
     try{
-        var [insertResult, _ ] = await db.execute(`INSERT INTO posts (title, description, video, thumbnail, fk_userId) value (?,?,?,?,?);`, [title, description, path, thumbnail, userId]);
+        var [insertResult, _ ] = await db.execute(
+            `INSERT INTO posts (title, description, video, thumbnail, fk_userId) value (?,?,?,?,?);`, [title, description, path, thumbnail, userId]);
         if(insertResult && insertResult.affectedRows){
             req.flash("success", "Your post was created!");
             return req.session.save(function(error){
